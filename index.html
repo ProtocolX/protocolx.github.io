@@ -6,8 +6,8 @@
     <script async src="https://telegram.org/js/telegram-widget.js?4" data-telegram-login="SimpleAuthBot" data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
 <script type="text/javascript">
   function onTelegramAuth(user) {
-    alert('Logged YES in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
-  }
+    // вызываем бота, который требует с пользователя email
+    // после ввода email бот отправляет инфу на сайт?
     </script>
   </body>
   
