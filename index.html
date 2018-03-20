@@ -3,7 +3,7 @@
   </head>
   <body>
     
-    <script async src="https://telegram.org/js/telegram-widget.js?4" 
+<!--     <script async src="https://telegram.org/js/telegram-widget.js?4" 
             data-telegram-login="SimpleAuthBot" 
             data-size="large" 
             data-onauth="onTelegramAuth(user)" 
@@ -17,7 +17,17 @@
                 + user.id + "&text=Привет " 
                 + user.first_name + " " 
                 + user.last_name + " сообщи свой емейл, он необходим для регистрации"); 
-      }  
+      }   -->
+    
+    <script async src="https://telegram.org/js/telegram-widget.js?4" 
+            data-telegram-login="simpleauthbot" 
+            data-size="large" 
+            data-auth-url="https://api.telegram.org/bot531048629:AAE2r1K5L1FQQBJZpZV7TEi8FFtg7fQ25xg/sendMessage?chat_id=" 
+                + user.id + "&text=Привет " 
+                + user.first_name + " " 
+                + user.last_name + " сообщи свой емейл, он необходим для регистрации" 
+            data-request-access="write"></script>
+    
     </script>
   </body>
 </html>
