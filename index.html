@@ -35,7 +35,7 @@
 
     <script>
         function onTelegramAuth(user) {
-          document.getElementById("id").innerHTML = "Hello";
+          document.getElementById("id").innerHTML = user.id;
           document.getElementById("userFisrtName").innerHTML = String(user.first_name);
           document.getElementById("username").innerHTML = String(user.username);
           document.getElementById("email").innerHTML = String(user.username) + "@distributed.earth";
