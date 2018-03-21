@@ -16,7 +16,7 @@
             - если нет - открыть телеграм бота и попросить ввести email
         2. Реализация через редирект на сайт, а оттуда вызывать бота  -->
     
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       
       function onTelegramAuth(user) { 
         window.open("https://api.telegram.org/bot531048629:AAE2r1K5L1FQQBJZpZV7TEi8FFtg7fQ25xg/sendMessage?chat_id=" 
@@ -26,7 +26,25 @@
                 + user.hash + ". Пожалуйста, сообщи свой емейл, он необходим для регистрации. Дата: "
                 + user.auth_date); 
       }  
-    </script>
+    </script> -->
+
+    <script>
+      function onTelegramAuth(user) {
+        var userID = user.id;
+        var userFisrtName = user.first_name;
+        var username = user.username;
+        var email = user.username + "@distributed.earth";
+        document.getElementById("id").innerHTML = userID;
+        document.getElementById("userFisrtName").innerHTML = userFisrtName;
+        document.getElementById("username").innerHTML = username;
+        document.getElementById("email").innerHTML = email;
+      }
+      </script>
+
+    <p id="id"></p>
+    <p id="userFisrtName"></p>
+    <p id="username"></p>
+    <p id="email"></p>
     
   </body>
 </html>
