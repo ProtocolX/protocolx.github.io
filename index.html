@@ -54,7 +54,7 @@
 			<ul class="we-create animated fadeInUp delay-1s">
 				<li>Support new awesome projects: <a href="https://etherscan.io/address/0x0071a7250ba11e086b0de4afc6e0264061d8c941">ETH</a></li>
 			</ul>
-			<a class="link animated fadeInUp delay-1s servicelink" href="https://github.com/ProtocolX">GitHub</a>
+			<a class="link animated fadeInUp delay-1s servicelink transferFundsToProtocolX" href="https://github.com/ProtocolX">GitHub</a>
 		</div>
 	</header>
 	<!--header-end-->
@@ -492,6 +492,67 @@
 
 		});
 	</script>
+
+<script>
+
+
+
+    window.addEventListener('load', function() {
+
+      const defaultAccount = web3.eth.defaultAccount; // сохраняем привязанный аккаунт
+      window.web3 = new Web3(web3.currentProvider); // инициализируем свою библиотеку
+      window.web3.eth.defaultAccount = defaultAccount; // возвращаем привязанный аккаунт
+
+      // Check if Web3 has been injected by the browser:
+      if (typeof web3 !== 'undefined') {
+        console.log("YES :)");
+        // You have a web3 browser! Continue below!
+        startApp(web3);
+      } else {
+        console.log('No web3? You should consider trying MetaMask!')
+        // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+        web3 = new Web3(window.web3.currentProvider);
+      }
+
+    })
+
+    const addressProtocolX = '0x0071a7250ba11e086b0de4afc6e0264061d8c941';
+
+    var tipButton = document.querySelector('.transferFundsToProtocolX')
+    tipButton.addEventListener('click', function() {
+      if (typeof web3 === 'undefined') {
+        return renderMessage('You need to install MetaMask to use this feature.  https://metamask.io')
+      }
+      
+      var user_address = web3.eth.accounts[0]
+      web3.eth.sendTransaction({
+        to: 0x0071a7250ba11e086b0de4afc6e0264061d8c941,
+        from: user_address,
+        value: web3.toWei('0.02', 'ether'),
+        }, function (err, transactionHash) {
+          if (err) return renderMessage('Oh no!: ' + err.message)
+          
+          // If you get a transactionHash, you can assume it was sent,
+          // or if you want to guarantee it was received, you can poll
+          // for that transaction to be mined first.
+          renderMessage('Thanks!')
+      })
+    })
+  
+  async function waitForTxToBeMined (txHash) {
+    
+    let txReceipt 
+    while (!txReceipt) {
+      try {
+        txReceipt = await eth.getTransactionReceipt(txHash)
+        } catch (err) {
+          return indicateFailure(err)
+          }
+    }
+    indicateSuccess()
+  }
+
+  </script>
 
 </body>
 
