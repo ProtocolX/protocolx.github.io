@@ -1,9 +1,0 @@
-- lotteryx
-- freedomtoken
-- miningx
-- soultoken
-- tokenx
-- warofbets
-- pledgetoken
-- livetoken
-- globalstate
